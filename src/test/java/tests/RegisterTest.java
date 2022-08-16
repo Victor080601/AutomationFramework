@@ -22,7 +22,24 @@ public class RegisterTest {
         driver.manage().window().maximize();
 
         //identific un element
-        WebElement signinElement = driver.findElement(By.id("btn1"));
-        signinElement.click();
+        WebElement skipsigninElement = driver.findElement(By.id("btn2"));
+        skipsigninElement.click();
+
+        WebElement fieldNameElement = driver.findElement(By.xpath("//input[@placeholder='First Name']"));
+        String nameValue = "Oprea";
+        fieldNameElement.sendKeys(nameValue);
+
+        WebElement fieldLastNameElement = driver.findElement(By.xpath("//input[@placeholder='Last Name']"));
+        String lastnameValue = "Victor";
+        fieldLastNameElement.sendKeys(lastnameValue);
+
+        WebElement fieldAddressElement = driver.findElement(By.cssSelector("textarea[ng-model]"));
+        String addressValue = "Strada Mea Nr 432";
+        fieldAddressElement.sendKeys(addressValue);
+
+        WebElement fieldEmailElement = driver.findElement(By.cssSelector("input[ng-model='EmailAdress']"));
+        String emailValue = "cod@yahoo.com";
+        fieldEmailElement.sendKeys(emailValue);
+
     }
 }
