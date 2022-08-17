@@ -7,24 +7,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
+import shareData.ShareData;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegisterTest {
-    public WebDriver driver;
+public class RegisterTest extends ShareData {
 
     @Test
     public void registerMethod() {
-        //setez driverul de chrome
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
-        //deschid un browser de chrome
-        driver = new ChromeDriver();
-        //accesez un anumit URL
-        driver.get("https://demo.automationtesting.in/Index.html");
-
-        //facem browser-ul maximaze
-        driver.manage().window().maximize();
 
         //identific un element
         WebElement skipsigninElement = driver.findElement(By.id("btn2"));
