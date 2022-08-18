@@ -1,5 +1,6 @@
 package tests;
 
+import helpMethods.ElementMethods;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -14,15 +15,17 @@ public class AlertTest extends ShareData {
     @Test
     public void alertMethod(){
 
+        ElementMethods element = new ElementMethods(driver);
+
         WebElement skipsigninElement = driver.findElement(By.id("btn2"));
-        skipsigninElement.click();
+        element.clickElement(skipsigninElement);
 
         WebElement switchtoElement = driver.findElement(By.xpath("//a[text()='SwitchTo']"));
-        Actions action = new Actions(driver);
-        action.moveToElement(switchtoElement).perform();
+        element.hoverElement(switchtoElement);
+
 
         WebElement alertsElement = driver.findElement(By.xpath("//a[text()='Alerts']"));
-        alertsElement.click();
+        element.clickElement(alertsElement);
 
         //navigam catre o anumita pagina
         driver.navigate().to("https://demo.automationtesting.in/Alerts.html");
