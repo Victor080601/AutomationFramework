@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -24,6 +25,7 @@ public class YoutubeTest {
 
         WebElement buttonElement = driver.findElement(By.cssSelector("yt-formatted-string[class='style-scope ytd-button-renderer style-primary size-default']"));
         buttonElement.click();
+        //driver.navigate().to("https://www.youtube.com/");
 
         String actualPage = driver.getTitle();
         String expectedPage = "YouTube";
@@ -33,7 +35,7 @@ public class YoutubeTest {
         //searchElement.click();
 
 
-       WebElement searchBarElement = driver.findElement(By.xpath("//input[@class='gsfi ytd-searchbox']"));
+       WebElement searchBarElement = driver.findElement(By.id("search"));
        String searchValue = "The Mountain";
        searchBarElement.sendKeys(searchValue);
 
