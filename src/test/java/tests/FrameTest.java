@@ -1,5 +1,8 @@
 package tests;
 
+import helpMethods.ElementMethods;
+import helpMethods.FrameMethods;
+import helpMethods.PageMethods;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -13,38 +16,42 @@ public class FrameTest extends ShareData {
 
     @Test
     public void frameMethod(){
+        ElementMethods element = new ElementMethods(driver);
+
+        PageMethods page = new PageMethods(driver);
+
+        FrameMethods frame = new FrameMethods(driver);
 
         WebElement skipsigninElement = driver.findElement(By.id("btn2"));
-        skipsigninElement.click();
+        element.clickElement(skipsigninElement);
 
         WebElement switchtoElement = driver.findElement(By.xpath("//a[text()='SwitchTo']"));
-        Actions action = new Actions(driver);
-        action.moveToElement(switchtoElement).perform();
+        element.hoverElement(switchtoElement);
 
         WebElement frameElement = driver.findElement(By.xpath("//a[text()='Frames']"));
-        frameElement.click();
+        element.clickElement(frameElement);
 
         //navigam catre o anumita pagina
-        driver.navigate().to("https://demo.automationtesting.in/Frames.html");
+        page.navigatetoURL("https://demo.automationtesting.in/Frames.html");
 
 
         List<WebElement> frameOptions = driver.findElements(By.cssSelector(".nav-tabs>li>a"));
-        frameOptions.get(0).click();
-        driver.switchTo().frame("singleframe");
+        element.clickElement(frameOptions.get(0));
+        frame.switchIFrame("singleframe");
 
         WebElement checkboxElement = driver.findElement(By.cssSelector("input[type='text']"));
         String checkboxValue = "Oprea Victor";
-        checkboxElement.sendKeys(checkboxValue);
+        element.fillElement(checkboxElement,checkboxValue);
         //iese din pagina
-        driver.switchTo().defaultContent();
+        frame.switchDefault();
 
 
-        frameOptions.get(1).click();
-        driver.switchTo().frame(driver.findElement(By.cssSelector("iframe[src='MultipleFrames.html']")));
-        driver.switchTo().frame(driver.findElement(By.cssSelector("iframe[src='SingleFrame.html']")));
+        element.clickElement(frameOptions.get(1));
+        frame.switchIFrame(By.cssSelector("iframe[src='MultipleFrames.html']"));
+        frame.switchIFrame(By.cssSelector("iframe[src='SingleFrame.html']"));
         WebElement checkbox1Element = driver.findElement(By.cssSelector("input[type='text']"));
         String checkbox1Value = "Oprea";
-        checkbox1Element.sendKeys(checkbox1Value);
+        element.fillElement(checkbox1Element,checkbox1Value);
 
 
 

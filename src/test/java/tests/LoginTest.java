@@ -1,5 +1,7 @@
 package tests;
 
+import helpMethods.ElementMethods;
+import helpMethods.PageMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,31 +15,32 @@ public class LoginTest extends ShareData {
     @Test
     public void loginMethod(){
 
+        PageMethods page = new PageMethods(driver);
+
+        ElementMethods element = new ElementMethods(driver);
+
         //identific un element
         WebElement signinElement = driver.findElement(By.id("btn1"));
-        signinElement.click();
+        element.clickElement(signinElement);
 
         //validam o anumita pagina
-        String actualPage = driver.getTitle();
-        String expectedPage = "SignIn";
-        Assert.assertEquals(actualPage,expectedPage);
+        page.validateTitlePage("SignIn");
+
 
         WebElement emailElement = driver.findElement(By.cssSelector("input[ng-model='Email']"));
         String emailValue = "codEmail@yahoo.com";
-        emailElement.sendKeys(emailValue);
+        element.fillElement(emailElement,emailValue);
 
         WebElement passwordElement = driver.findElement(By.cssSelector("input[ng-model='Password']"));
         String passwordValue = "Parola123";
-        passwordElement.sendKeys(passwordValue);
+        element.fillElement(passwordElement,passwordValue);
 
         WebElement enterElement = driver.findElement(By.id("enterbtn"));
-        enterElement.click();
+        element.clickElement(enterElement);
 
         //validam un mesaj
         WebElement errormessageElement = driver.findElement(By.id("errormsg"));
-        String actualError = errormessageElement.getText();
-        String expectedError = "Invalid User Name or PassWord";
-        Assert.assertEquals(actualError,expectedError);
+        element.validateElementText(errormessageElement, "Invalid User Name or PassWord");
 
         //inchidem un browser
         //driver.quit();

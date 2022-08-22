@@ -1,6 +1,8 @@
 package tests;
 
+import helpMethods.AlertMethods;
 import helpMethods.ElementMethods;
+import helpMethods.PageMethods;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -17,6 +19,10 @@ public class AlertTest extends ShareData {
 
         ElementMethods element = new ElementMethods(driver);
 
+        PageMethods page = new PageMethods(driver);
+
+        AlertMethods alert = new AlertMethods(driver);
+
         WebElement skipsigninElement = driver.findElement(By.id("btn2"));
         element.clickElement(skipsigninElement);
 
@@ -28,32 +34,26 @@ public class AlertTest extends ShareData {
         element.clickElement(alertsElement);
 
         //navigam catre o anumita pagina
-        driver.navigate().to("https://demo.automationtesting.in/Alerts.html");
+        page.navigatetoURL("https://demo.automationtesting.in/Alerts.html");
 
 
         List<WebElement> alertOptions = driver.findElements(By.cssSelector(".nav-stacked>li>a"));
-        alertOptions.get(0).click();
+        element.clickElement( alertOptions.get(0));
 
         WebElement alertOkButton = driver.findElement(By.cssSelector("#OKTab>button"));
-        alertOkButton.click();
-        Alert alertOk = driver.switchTo().alert();
-        alertOk.accept();
+        element.clickElement(alertOkButton);
+        alert.alertOkProcess();
 
-        alertOptions.get(1).click();
+        element.clickElement(alertOptions.get(1));
 
         WebElement alertOkCancelButton = driver.findElement(By.cssSelector(".btn-primary"));
-        alertOkCancelButton.click();
-        Alert alertCancelOk = driver.switchTo().alert();
-        alertCancelOk.dismiss();
+        element.clickElement(alertOkCancelButton);
+        alert.alertCancelProcess();
 
-        alertOptions.get(2).click();
+        element.clickElement(alertOptions.get(2));
 
         WebElement alertTextBox = driver.findElement(By.cssSelector(".btn-info"));
-        alertTextBox.click();
-        Alert alertText = driver.switchTo().alert();
-        alertText.sendKeys("Oprea Victor");
-        alertText.accept();
-
-
+        element.clickElement(alertTextBox);
+        alert.alertTextBoxProcess("Oprea Victor");
     }
 }

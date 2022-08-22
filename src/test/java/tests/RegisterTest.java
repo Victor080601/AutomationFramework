@@ -1,5 +1,6 @@
 package tests;
 
+import helpMethods.ElementMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -17,56 +18,57 @@ public class RegisterTest extends ShareData {
     @Test
     public void registerMethod() {
 
+        ElementMethods element = new ElementMethods(driver);
+
+
+
         //identific un element
         WebElement skipsigninElement = driver.findElement(By.id("btn2"));
-        skipsigninElement.click();
+        element.clickElement(skipsigninElement);
 
         WebElement fieldNameElement = driver.findElement(By.xpath("//input[@placeholder='First Name']"));
         String nameValue = "Oprea";
-        fieldNameElement.sendKeys(nameValue);
+        element.fillElement(fieldNameElement,nameValue);
 
         WebElement fieldLastNameElement = driver.findElement(By.xpath("//input[@placeholder='Last Name']"));
         String lastnameValue = "Victor";
-        fieldLastNameElement.sendKeys(lastnameValue);
+        element.fillElement(fieldLastNameElement,lastnameValue);
 
         WebElement fieldAddressElement = driver.findElement(By.cssSelector("textarea[ng-model]"));
         String addressValue = "Strada Mea Nr 432";
-        fieldAddressElement.sendKeys(addressValue);
+        element.fillElement(fieldAddressElement,addressValue);
 
         WebElement fieldEmailElement = driver.findElement(By.cssSelector("input[ng-model='EmailAdress']"));
         String emailValue = "cod@yahoo.com";
-        fieldEmailElement.sendKeys(emailValue);
+        element.fillElement(fieldEmailElement,emailValue);
 
         WebElement fieldPhoneElement = driver.findElement(By.cssSelector("input[ng-model='Phone']"));
         String phoneValue = "0723456789";
-        fieldPhoneElement.sendKeys(phoneValue);
+        element.fillElement(fieldPhoneElement,phoneValue);
 
         WebElement fieldGenderElement = driver.findElement(By.cssSelector("input[value='Male']"));
-        fieldGenderElement.click();
+        element.clickElement(fieldGenderElement);
 
         WebElement fieldHobbiedElement = driver.findElement(By.id("checkbox1"));
-        fieldHobbiedElement.click();
+        element.clickElement(fieldHobbiedElement);
 
         //dropdown(select)
         WebElement fieldSkillsElement = driver.findElement(By.id("Skills"));
-        Select skillsSelect = new Select(fieldSkillsElement);
-        skillsSelect.selectByVisibleText("Java");
+        element.selectDropDownText(fieldSkillsElement,"Java");
 
         //Date of birth
+
         WebElement fieldDateElement = driver.findElement(By.id("yearbox"));
-        Select dateSelect = new Select(fieldDateElement);
-        dateSelect.selectByValue("2001");
+        element.selectDropDownValue(fieldDateElement, "2001");
 
         WebElement fieldMonthElement = driver.findElement(By.cssSelector("select[ng-model='monthbox']"));
-        Select monthSelect = new Select(fieldMonthElement);
-        monthSelect.selectByVisibleText("January");
+        element.selectDropDownText(fieldMonthElement,"January");
 
         WebElement fieldDayElement = driver.findElement(By.id("daybox"));
-        Select daySelect = new Select(fieldDayElement);
-        daySelect.selectByValue("8");
+        element.selectDropDownValue(fieldDayElement,"8");
 
         WebElement languageElement = driver.findElement(By.id("msdd"));
-        languageElement.click();
+        element.clickElement(languageElement);
 
         //interactionam cu o multime de elemente
         List<WebElement> languageOptions = driver.findElements(By.cssSelector(".ui-front>li>a"));
@@ -74,31 +76,31 @@ public class RegisterTest extends ShareData {
         {
             if(languageOptions.get(i).getText().equals("English"))
             {
-                languageOptions.get(i).click();
+                element.clickElement(languageOptions.get(i));
             }
         }
 
         WebElement fieldDelete = driver.findElement(By.cssSelector(".ui-icon"));
-        fieldDelete.click();
+        element.clickElement(fieldDelete);
 
-        fieldGenderElement.click();
+        element.clickElement(fieldGenderElement);
 
 
         WebElement fieldCountry = driver.findElement(By.cssSelector(".select2-selection"));
-        fieldCountry.click();
+        element.clickElement(fieldCountry);
 
         WebElement fieldCountryElement = driver.findElement(By.cssSelector(".select2-search__field"));
         String countryValue = "Australia";
-        fieldCountryElement.sendKeys(countryValue);
+        element.fillElement(fieldCountryElement,countryValue);
         fieldCountryElement.sendKeys(Keys.ENTER);
 
         WebElement passElement = driver.findElement(By.id("firstpassword"));
         String passValue = "123";
-        passElement.sendKeys(passValue);
+        element.fillElement(passElement,passValue);
 
         WebElement confirmpassElement = driver.findElement(By.id("secondpassword"));
         String confirmpassValue = "123";
-        confirmpassElement.sendKeys(confirmpassValue);
+        element.fillElement(confirmpassElement,confirmpassValue);
 
     }
 }
