@@ -40,4 +40,5 @@ public class ElementMethods {
         Select skillsSelect = new Select(element);
         skillsSelect.selectByValue(value);
     }
+
 }
