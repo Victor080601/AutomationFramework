@@ -68,6 +68,12 @@ public class RegisterPage extends BasePage
     @FindBy(id = "secondpassword")
     private WebElement confirmpassElement;
 
+    @FindBy(xpath = "//a[text()='SwitchTo']")
+    private WebElement switchtoElement;
+
+    @FindBy(xpath = "//a[text()='Windows']")
+    private WebElement  windowElement;
+
     public void registerProcess(String firstName, String lastName, String adress, String email, String phone, String skill,
                                 String year, String month, String day, String password, String confirmPassword, String country, String language)
     {
@@ -110,6 +116,13 @@ public class RegisterPage extends BasePage
     {
         elementMethods.fillElement(fieldCountryElement,country);
         fieldCountryElement.sendKeys(Keys.ENTER);
+    }
+
+    public void goToWindowPage(){
+        elementMethods.hoverElement(switchtoElement);
+        elementMethods.clickElement(windowElement);
+        pageMethods.navigatetoURL("https://demo.automationtesting.in/Windows.html");
+
     }
 
 }
