@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -74,6 +75,9 @@ public class RegisterPage extends BasePage
     @FindBy(xpath = "//a[text()='Windows']")
     private WebElement  windowElement;
 
+    @FindBy(xpath = "//a[text()='Frames']")
+    private WebElement frameElement;
+
     public void registerProcess(String firstName, String lastName, String adress, String email, String phone, String skill,
                                 String year, String month, String day, String password, String confirmPassword, String country, String language)
     {
@@ -123,6 +127,12 @@ public class RegisterPage extends BasePage
         elementMethods.clickElement(windowElement);
         pageMethods.navigatetoURL("https://demo.automationtesting.in/Windows.html");
 
+    }
+
+    public void goToFrame(){
+        elementMethods.hoverElement(switchtoElement);
+        elementMethods.clickElement(frameElement);
+        pageMethods.navigatetoURL("https://demo.automationtesting.in/Frames.html");
     }
 
 }
