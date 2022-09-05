@@ -1,5 +1,6 @@
 package pages;
 
+import objectData.AlertObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,10 +37,10 @@ public class AlertPage extends BasePage{
         alertMethods.alertCancelProcess();
     }
 
-    public void alertTextProcess(String value){
+    public void alertTextProcess(AlertObject alertObject){
         elementMethods.clickElement(alertOptions.get(2));
 
         elementMethods.clickElement(alertTextBox);
-        alertMethods.alertTextBoxProcess(value);
+        alertMethods.alertTextBoxProcess(alertObject.getMessage());
     }
 }

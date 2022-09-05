@@ -1,24 +1,20 @@
 package tests;
 
-import helpMethods.ElementMethods;
-import helpMethods.FrameMethods;
-import helpMethods.PageMethods;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import objectData.FrameObject;
 import org.testng.annotations.Test;
 import pages.FramePage;
 import pages.IndexPage;
 import pages.RegisterPage;
-import shareData.ShareData;
+import shareData.Hooks;
 
-import java.util.List;
-
-public class FrameTest extends ShareData {
+public class FrameTest extends Hooks {
 
     @Test
     public void frameMethod(){
+        FrameObject frameObject = new FrameObject(testData);
+        frameObject.prepareData(testData);
+
+
         IndexPage indexPage = new IndexPage(driver);
         indexPage.clickSkipSignIn();
 
@@ -26,7 +22,7 @@ public class FrameTest extends ShareData {
         registerPage.goToFrame();
 
         FramePage framePage = new FramePage(driver);
-        framePage.singleFrame("value");
-        framePage.multipleFrame("val");
+        framePage.singleFrame(frameObject);
+        framePage.multipleFrame(frameObject);
     }
 }

@@ -1,29 +1,30 @@
 package tests;
 
 
+import objectData.LoginObject;
 import org.testng.annotations.Test;
 import pages.IndexPage;
 import pages.LogInPage;
-import shareData.ShareData;
+import shareData.Hooks;
 
-public class LoginTest extends ShareData {
+public class LoginTest extends Hooks {
 
     @Test
     public void loginMethod(){
 
+        LoginObject loginTest = new LoginObject(testData);
+
         IndexPage indexPage = new IndexPage(driver);
         indexPage.signInElement();
+
         LogInPage login = new LogInPage(driver);
-        login.logInProcess("opreavictor59@yahoo.com","automationtesting123");
+        login.logInProcess(loginTest);
 
 
 
 
 
         //identific un element
-
-
-        //validam o anumita pagina
 
         //inchidem un browser
         //driver.quit();
