@@ -1,5 +1,5 @@
 package pages;
-
+import objectData.RegisterObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -81,26 +81,25 @@ public class RegisterPage extends BasePage
     @FindBy(xpath = "//a[text()='Alerts']")
     private  WebElement alertsElement;
 
-    public void registerProcess(String firstName, String lastName, String adress, String email, String phone, String skill,
-                                String year, String month, String day, String password, String confirmPassword, String country, String language)
+    public void registerProcess(RegisterObject registerObject)
     {
-        elementMethods.fillElement(fieldNameElement,firstName);
-        elementMethods.fillElement(fieldLastNameElement,lastName);
-        elementMethods.fillElement(fieldAddressElement,adress);
-        elementMethods.fillElement(fieldEmailElement,email);
-        elementMethods.fillElement(fieldPhoneElement,phone);
+        elementMethods.fillElement(fieldNameElement,registerObject.getFirstName());
+        elementMethods.fillElement(fieldLastNameElement,registerObject.getLastName());
+        elementMethods.fillElement(fieldAddressElement,registerObject.getAddress());
+        elementMethods.fillElement(fieldEmailElement,registerObject.getEmail());
+        elementMethods.fillElement(fieldPhoneElement,registerObject.getPhone());
         elementMethods.clickElement(fieldGenderElement);
         elementMethods.clickElement(fieldHobbiedElement);
-        elementMethods.selectDropDownText(fieldSkillsElement,skill);
-        elementMethods.selectDropDownValue(fieldDateElement, year);
-        elementMethods.selectDropDownText(fieldMonthElement,month);
-        elementMethods.selectDropDownValue(fieldDayElement,day);
-        selectLanguage(language);
+        elementMethods.selectDropDownText(fieldSkillsElement,registerObject.getSkill());
+        elementMethods.selectDropDownValue(fieldDateElement, registerObject.getYear());
+        elementMethods.selectDropDownText(fieldMonthElement,registerObject.getMonth());
+        elementMethods.selectDropDownValue(fieldDayElement,registerObject.getDay());
+        elementMethods.fillElement(passElement,registerObject.getPassword());
+        elementMethods.fillElement(confirmpassElement,registerObject.getConfirmPassword());
+        selectLanguage(registerObject.getLanguage());
         //elementMethod.clickElement(fieldDelete);
         elementMethods.clickElement(fieldCountry);
-        enterCountryElement(country);
-        elementMethods.fillElement(passElement,password);
-        elementMethods.fillElement(confirmpassElement,confirmPassword);
+        enterCountryElement(registerObject.getCountry());
     }
 
     public void selectLanguage(String language)

@@ -1,7 +1,6 @@
 package pages;
 
 import objectData.LoginObject;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,8 +11,8 @@ public class LogInPage extends BasePage{
         super(driver);
     }
 
-    @FindBy(id = "btn1")
-    private WebElement signinElement;
+    //@FindBy(id = "btn1")
+    //private WebElement signinElement;
 
     @FindBy(css = "input[ng-model='Email']")
     private WebElement emailValue;

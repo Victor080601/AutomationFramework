@@ -1,11 +1,8 @@
 package pages;
 
 import helpMethods.*;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
-import javax.swing.text.Element;
 
 public class BasePage {
 

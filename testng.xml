@@ -3,6 +3,7 @@
 <suite name="Regression Suite">
     <test name="Automation Test" parallel="classes">
         <packages>
-            <package name="tests.*"></package>
+            <package name="test.*"></package>
         </packages>
-</suite> <!-- Suite -->m
+    </test>
+</suite> <!-- Suite -->

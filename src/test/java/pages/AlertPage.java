@@ -1,6 +1,7 @@
 package pages;
 
 import objectData.AlertObject;
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,7 +15,7 @@ public class AlertPage extends BasePage{
     }
 
     @FindBy(css = ".nav-stacked>li>a")
-    private   List<WebElement> alertOptions;
+    private List<WebElement> alertOptions;
 
     @FindBy(css = "#OKTab>button")
     private  WebElement alertOkButton;
@@ -39,7 +40,6 @@ public class AlertPage extends BasePage{
 
     public void alertTextProcess(AlertObject alertObject){
         elementMethods.clickElement(alertOptions.get(2));
-
         elementMethods.clickElement(alertTextBox);
         alertMethods.alertTextBoxProcess(alertObject.getMessage());
     }

@@ -26,18 +26,6 @@ public class WindowPage extends BasePage{
     @FindBy(css = "#Multiple>button")
     private WebElement multipleWindow;
 
-    public void tabProcess(){
-        elementMethods.clickElement(windowsOptions.get(0));
-
-        elementMethods.clickElement(clickTab);
-
-        //cate taburi gaseste deschise
-        windowMethods.switchToSpecificTab(1);
-        //inchidem tabul curent
-        pageMethods.closeCurrentPage();
-        windowMethods.switchToSpecificTab(0);
-    }
-
     public void windowProcess(){
 
         elementMethods.clickElement(windowsOptions.get(1));
@@ -48,6 +36,18 @@ public class WindowPage extends BasePage{
         pageMethods.closeCurrentPage();
         windowMethods.switchToSpecificTab(0);
 
+    }
+
+    public void tabProcess(){
+        elementMethods.clickElement(windowsOptions.get(0));
+
+        elementMethods.clickElement(clickTab);
+
+        //cate taburi gaseste deschise
+        windowMethods.switchToSpecificTab(1);
+        //inchidem tabul curent
+        pageMethods.closeCurrentPage();
+        windowMethods.switchToSpecificTab(0);
     }
 
     public void multipleTabProcess(){

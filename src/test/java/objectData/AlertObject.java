@@ -7,6 +7,7 @@ public class AlertObject {
     private String message;
 
     public AlertObject(HashMap<String, String> testData) {
+
         prepareData(testData);
     }
 

@@ -4,21 +4,20 @@ import org.testng.annotations.Test;
 import pages.IndexPage;
 import pages.RegisterPage;
 import pages.WindowPage;
+import shareData.Hooks;
 import shareData.ShareData;
 
-public class WindowTest extends ShareData {
+public class WindowTest extends Hooks {
 
     @Test
     public void windowMethod(){
-        IndexPage indexPage = new IndexPage(driver);
+        IndexPage indexPage = new IndexPage(this.driver);
         indexPage.clickSkipSignIn();
-
-        RegisterPage registerPage = new RegisterPage(driver);
+        RegisterPage registerPage = new RegisterPage(this.driver);
         registerPage.goToWindowPage();
-
-        WindowPage windowPage = new WindowPage(driver);
+        WindowPage windowPage = new WindowPage(this.driver);
         windowPage.tabProcess();
-        windowPage.windowProcess();
-        windowPage.multipleTabProcess();
+       // windowPage.windowProcess();
+       // windowPage.multipleTabProcess();
     }
 }

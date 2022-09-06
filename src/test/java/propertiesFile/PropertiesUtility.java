@@ -25,7 +25,7 @@ public class PropertiesUtility {
 
     public HashMap<String,String> getAllKeyValue(){
         HashMap<String,String> keyValue = new HashMap<>();
-        for(Object key: properties.keySet()){
+        for(Object key:properties.keySet()){
             keyValue.put(key.toString(),properties.getProperty(key.toString()));
         }
         return keyValue;

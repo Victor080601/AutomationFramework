@@ -11,7 +11,7 @@ public class Hooks extends ShareData{
     @BeforeMethod
     public void prepareEnvironment(){
         prepareDriver();
-        String className = this.getClass().getName();
+        String className = this.getClass().getSimpleName();
         PropertiesUtility propertiesFile = new PropertiesUtility(className);
         testData = propertiesFile.getAllKeyValue();
     }
